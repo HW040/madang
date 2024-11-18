@@ -26,4 +26,32 @@
          </choose>
          LIMIT #{startIdx}, #{size}
     </select>
+
+    <update id="updCustomer">
+        update customer
+       <set>
+           <if test= "name != null and name != '' ">
+               ,name =#{name}
+           </if>
+           <if test= "address != null and address != '' ">
+               ,address =#{address}
+           </if>
+           <if test= "phone != null and phone != '' ">
+               ,phone =#{phone}
+           </if>
+
+       </set>
+        where custid =#{custId}
+
+    </update>
+
+    <delete id="deleteCustomer">
+        delete
+        from customer
+        where custid =#{custId}
+    </delete>
+
+
+
+
 </mapper>
